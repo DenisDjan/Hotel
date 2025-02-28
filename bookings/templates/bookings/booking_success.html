@@ -1,0 +1,7 @@
+{% extends 'bookings/main.html' %}
+
+{% block content %}
+<h1>Booking Successful!</h1>
+<p>Your booking was successful. Thank you for choosing our service.</p>
+<a href="{% url 'dashboard' %}" class="btn btn-primary">Return to Dashboard</a>
+{% endblock %}

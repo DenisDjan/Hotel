@@ -1,0 +1,43 @@
+{% extends 'bookings/main.html' %}
+
+{% block title %}Edit Booking Details{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="fw-bold">Edit Booking Details</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <form method="post">
+                        {% csrf_token %}
+                        <!-- Render Form for Check-in and Check-out -->
+                        <div class="form-group mb-3">
+                            {{ form.check_in.label_tag }}
+                            {{ form.check_in }}
+                        </div>
+                        <div class="form-group mb-3">
+                            {{ form.check_out.label_tag }}
+                            {{ form.check_out }}
+                        </div>
+                        <!-- Rooms Booked -->
+                        <div class="form-group mb-3">
+                            <label for="id_rooms_booked" class="form-label fw-bold">Number of Rooms Booked</label>
+                            {{ form.rooms_booked }}
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success fw-bold">Save Changes</button>
+                        </div>
+                    </form>
+                    <div class="d-grid mt-2">
+                        <a href="{% url 'admin_booking_list' %}" class="btn btn-secondary fw-bold">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

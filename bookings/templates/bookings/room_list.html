@@ -1,0 +1,33 @@
+{% extends 'bookings/main.html' %}
+
+{% block title %}All Rooms{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">All Rooms</h2>
+    <div class="row">
+        {% for room in rooms %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <!-- Default Room Image -->
+                <img src="{{ room.default_image.url }}" class="card-img-top" alt="Room Image">
+
+                <!-- Room Information -->
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ room.room_type }}</h5>
+                    <p class="card-text">
+                        <strong>Capacity:</strong> {{ room.capacity }} people<br>
+                        <strong>Size:</strong> {{ room.size }} sq meters<br>
+                        <strong>Available:</strong> {{ room.quantity_available }}<br>
+                    </p>
+                    <!-- Book Now and View Details Buttons -->
+                    <div class=" align-items-center">
+                        <a href="{% url 'room_detail' room.id %}" class="btn btn-btn btn-primary ">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

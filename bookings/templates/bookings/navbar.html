@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand  ">
+    <div class="container">
+        <a class="navbar-brand text-white fw-bold">Hotel Booking</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                <!-- Admin Links -->
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'admin_dashboard' %}">Admin
+                        Dashboard</a></li>
+
+                {% else %}
+                <!-- User Links -->
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'dashboard' %}"> Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'room_list' %}">Rooms</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'my_bookings' %}">My Bookings</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'about_us' %}">About Us</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'contact_us' %}">Contact Us</a></li>
+                {% endif %}
+                <!-- Common Links -->
+               
+                {% else %}
+                <!-- Guest Links -->
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'dashboard' %}"> Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'room_list' %}">Rooms</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'book_room' %}">Book Room</a></li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                <!-- Dropdown for Authenticated Users -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user.username }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <!-- Links for Guests -->
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'login' %}">Login</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

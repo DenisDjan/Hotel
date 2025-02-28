@@ -1,0 +1,113 @@
+{% extends 'bookings/main.html' %}
+
+{% block title %}{{ room.room_type }} Details{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Image Slideshow -->
+        <div class="col-md-6">
+            <div id="roomCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for image in room_images %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ image.image.url }}" class="d-block w-100" alt="Room Image">
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#roomCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <!-- Thumbnail Gallery -->
+            <div class="mt-3 d-flex flex-wrap">
+                {% for image in room_images %}
+                <img src="{{ image.image.url }}" class="img-thumbnail m-1"
+                    style="width: 100px; height: 100px; object-fit: cover;" alt="Thumbnail Image"
+                    data-slide-index="{{ forloop.counter0 }}">
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Room Details -->
+        <div class="col-md-6">
+            <div class="text-center">
+                <h2>{{ room.room_type }}</h2>
+                <p>
+                    <strong>Room Size:</strong> {{ room.size }} sq meters<br>
+                    <strong>Capacity:</strong> {{ room.capacity }} people<br>
+                    <strong>Price:</strong> ${{ room.price_per_night }}<br>
+                </p>
+            </div>
+
+            <div class="row">
+                <!-- Room Facilities -->
+                <div class="col-md-6">
+                    <h4>Room Facilities:</h4>
+                    <ul>
+                        <li>Air Conditioning</li>
+                        <li>Private Bathroom</li>
+                        <li>Flat-screen TV</li>
+                        <li>Minibar</li>
+                        <li>Free WiFi</li>
+                        <li>Desk</li>
+                        <li>Sofa</li>
+                        <li>Wardrobe or closet</li>
+                        <li>Telephone</li>
+                        <li>Wake-up service</li>
+                        <li>Electric kettle</li>
+                        <li>Tea and coffee</li>
+                        <li>Refrigerator</li>
+                    </ul>
+                </div>
+
+                <!-- Private Bathroom -->
+                <div class="col-md-6">
+                    <h4>In Your Private Bathroom:</h4>
+                    <ul>
+                        <li>Free toiletries</li>
+                        <li>Bathrobe</li>
+                        <li>Toilet</li>
+                        <li>Bath or Shower</li>
+                        <li>Towels</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-between">
+                <a href="{% url 'room_list' %}" class="btn btn-secondary">Back</a>
+                <a href="{% url 'book_room' %}?room_id={{ room.id }}" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .thumbnail-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+</style>
+<script>
+    function jumpToSlide(index) {
+        const carousel = document.querySelector('#roomCarousel');
+        const bsCarousel = bootstrap.Carousel.getInstance(carousel);
+        bsCarousel.to(index);
+    }
+
+    // Add click event listeners to thumbnails
+    document.querySelectorAll('.img-thumbnail').forEach((thumbnail) => {
+        thumbnail.addEventListener('click', function () {
+            const index = this.getAttribute('data-slide-index');
+            jumpToSlide(index);
+        });
+    });
+</script>
+{% endblock %}

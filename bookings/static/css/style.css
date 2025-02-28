@@ -1,0 +1,148 @@
+/* General Body Style */
+body {
+  background: linear-gradient(135deg, #53a9f9, #ffffff, #2575fc, #fff);
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(135deg, #53a9f9, #2575fc);
+  color: skyblue;
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
+}
+.navbar-brand {
+  font-size: 1.8rem;
+  color: #280d93 !important; /* Vibrant teal color */
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #162ca6 !important; /* Soft light text */
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #e74c3c !important; /* Red hover effect */
+}
+
+/* Footer */
+.footer {
+  color: #ecf0f1;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Card Styles */
+.card {
+  border-radius: 15px;
+  background: #1c2833; /* Dark card background */
+  color: #000000; /* Light text */
+  
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7); /* Enhanced shadow */
+}
+
+.card-header {
+  background: linear-gradient(
+    90deg,
+    #2e7bd9,
+    #2e7bd9
+  ); /* Vibrant green gradient */
+  color: #fff;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.card-body {
+  padding: 20px;
+  font-size: 1rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #1abc9c; /* Teal button */
+  border: none;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #16a085;
+  transform: translateY(-2px); /* Lift effect */
+}
+
+/* Image Styles */
+.img-thumbnail {
+  cursor: pointer;
+  border: 2px solid #34495e; /* Dark border */
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.img-thumbnail:hover {
+  border: 2px solid #1abc9c;
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Carousel */
+.carousel-inner img {
+  border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5); /* Strong shadow */
+}
+
+.custom-carousel-control {
+  margin: 0 20px; /* Adjust the value as needed */
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+  padding: 10px;
+  border-radius: 10px;
+  color: #ecf0f1;
+  font-size: 1.2rem;
+  margin: 0 20px;
+}
+
+/* Section Styling */
+.about-section,
+.contact-section {
+  background: #1c2833; /* Solid dark background */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+
+.about-section h3,
+.contact-section h3 {
+  color: #28b0dd; /* Teal section headers */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .carousel-inner img {
+    height: 200px; /* Adjust image height for smaller screens */
+  }
+
+  .card-body {
+    font-size: 0.9rem;
+  }
+
+  .footer {
+    font-size: 0.8rem;
+  }
+}

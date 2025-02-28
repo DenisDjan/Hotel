@@ -1,0 +1,42 @@
+{% extends 'bookings/main.html' %}
+{% block title %}Admin - Booking List{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Admin - Booking List</h2>
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Number of Room</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.user }}</td>
+                <td>{{ booking.user.email }}</td>
+                <td>{{ booking.check_in }}</td>
+                <td>{{ booking.check_out }}</td>
+                <td>{{ booking.rooms_booked }}</td>
+                <td>
+                    {% if booking.check_out < today %} Complete {% else %} Active {% endif %} </td>
+                <td>
+                    <a class="btn btn-warning btn-sm" href="{% url 'update_booking_admin' booking.id %}">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'delete_booking_admin' booking.id %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8" class="text-center">No bookings available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

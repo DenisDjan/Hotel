@@ -1,0 +1,39 @@
+{% extends 'bookings/main.html' %}
+{% load static %}
+{% block title %}My Bookings{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Your Bookings</h1>
+
+    <!-- Flash Messages -->
+    {% if messages %}
+    <div class="mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Booking List -->
+    {% if bookings %}
+    <div class="row mt-4">
+        {% for booking in bookings %}
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <img src="{{ booking.room.default_image.url }}" class="card-img-top" alt="Room Image">
+                <div class="card-body">
+                    <h5 class="card-title text-center"> {{ booking.room.room_type }}</h5>
+                    <p class="card-text">
+                        <strong>Check-in:</strong> {{ booking.check_in }}<br>
+                        <strong>Check-out:</strong> {{ booking.check_out }}<br>
+                        <strong>Number of room:</strong>{{ booking.rooms_booked }}<br>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center mt-5">You have no bookings yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

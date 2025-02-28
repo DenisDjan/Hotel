@@ -1,0 +1,48 @@
+{% extends 'bookings/main.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-13">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>Contact Us</h2>
+                </div>
+                <div class="card-body bg-light">
+                    <div class="ratio ratio-16x9 mb-4">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.155706625098!2d104.8912516!3d11.5703975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109517388680e15%3A0x63057e6682968f5!2sInstitute%20of%20Technology%20of%20Cambodia!5e0!3m2!1sen!2skh!4v1614008313984!5m2!1sen!2skh"
+                            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <ul class="list-unstyled text-left">
+                        <li><strong>Email:</strong> support@hotelbooking.com</li>
+                        <li><strong>Phone:</strong> +855 12345678</li>
+                        <li><strong>Address:</strong> Russian Conf Norodom Boulevard, Phnom Penh</li>
+                    </ul>
+                    <hr>
+                    <h4>Follow Us</h4>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/so.thy.773124?mibextid=wwXIfr&mibextid=wwXIfr" target="_blank" class="text-decoration-none">
+                                <img src="{% static 'image/FB.png' %}" alt="Facebook" style="width: 40px; height: 40px;">
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.instagram.com/sothy_vandeth/profilecard/?igsh=MTI0dTJ5dGwybGh2bg==" target="_blank" class="text-decoration-none">
+                                <img src="{% static 'image/IG.png' %}" alt="Instagram" style="width: 40px; height: 40px;">
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.tiktok.com/@cestsothy?_t=ZS-8spb6Fs60iP&_r=1" target="_blank" class="text-decoration-none">
+                                <img src="{% static 'image/Tiktok.png' %}" alt="TikTok" style="width: 40px; height: 40px;">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

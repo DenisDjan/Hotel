@@ -1,0 +1,32 @@
+{% extends 'bookings/main.html' %}
+
+{% block title %}Update Room{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Update Room</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <!-- Card Header -->
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="fw-bold">Edit Room Details</h4>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body bg-light">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- Render Form Fields Dynamically -->
+                        {{ form.as_p }}
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success fw-bold">Save Changes</button>
+                        </div>
+                        <div class="d-grid mt-2">
+                            <a href="{% url 'admin_room_list' %}" class="btn btn-secondary fw-bold">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

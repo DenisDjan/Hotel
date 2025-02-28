@@ -1,0 +1,32 @@
+{% extends 'bookings/main.html' %}
+{% load static %}
+
+{% block title %}Available Rooms{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">All Rooms</h2>
+    <div class="row">
+        {% for room in rooms %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ room.default_image.url }}" class="card-img-fix" alt="Room Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ room.room_type }} Bed </h5>
+                    <p class="card-text">
+                        <strong>Price:</strong> ${{ room.price_per_night }}<br>
+                        <strong>Capacity:</strong> {{ room.capacity }} people<br>
+                        <strong>Size:</strong> {{ room.size }} sq meters<br>
+                        <strong>Available:</strong> {{ room.quantity_available }}<br>
+                    </p>
+                    <!-- Actions -->
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'update_room' room.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{% url 'delete_room' room.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,180 @@
+{% extends 'bookings/main.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section text-white text-center" style="background: url('{% static 'image/Hero.jpg' %}') no-repeat center center/cover; height: 90vh;">
+    <div class="container h-100 d-flex align-items-center justify-content-center">
+        <div>
+            <h1 class="display-4 fw-bold">Welcome to Hotel Booking</h1>
+            <p class="lead">Find your perfect getaway with us</p>
+            <a href="{% url 'room_list' %}" class="btn btn-primary btn-lg">Explore Rooms</a>
+        </div>
+    </div>
+</section>
+
+<!-- Carousel Section -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-13 text-center">
+            <h2><strong>Room Overviews</strong></h2>
+            <div id="roomCarousel" class="carousel slide shadow-lg rounded" data-bs-ride="carousel">
+                <!-- Carousel Indicators -->
+                <ol class="carousel-indicators">
+                    {% for room in rooms %}
+                    <li data-bs-target="#roomCarousel" data-bs-slide-to="{{ forloop.counter0 }}"
+                        class="{% if forloop.first %}active{% endif %}"></li>
+                    {% endfor %}
+                </ol>
+
+                <!-- Carousel Items -->
+                <div class="carousel-inner">
+                    {% for room in rooms %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ room.default_image.url }}" class="d-block w-100 rounded"
+                            style="height: 550px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{ room.room_type }}</h5>
+                            <p>{{ room.description }}</p>
+                            <a href="{% url 'room_detail' room.id %}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Carousel Controls -->
+                <a class="carousel-control-prev" href="#roomCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#roomCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<section class="features-section mt-5 py-4 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <i class="bi bi-star-fill text-primary mb-2" style="font-size: 2rem;"></i>
+                <h4>Top-rated Hotels</h4>
+                <p>We feature the best hotels with top ratings from our customers.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-wallet-fill text-primary mb-2" style="font-size: 2rem;"></i>
+                <h4>Best Price Guarantee</h4>
+                <p>Enjoy competitive pricing and exclusive deals to make your stays more affordable.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-headset text-primary mb-2" style="font-size: 2rem;"></i>
+                <h4>24/7 Support</h4>
+                <p>Our customer support team is here for you 24/7 to assist with any inquiries.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mt-4 py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-14">
+                <h2 class="fw-bold text-center mb-4">About Us</h2>
+                <div class="card shadow-lg border-0">
+                    <div class="card">
+                        <img src="{% static 'image/AboutUs.webp' %}" alt="About" class="about-image img-fluid rounded">
+                    </div>
+                    <div class="card-body bg-light text-left">
+                        <p>
+                            Welcome to <strong>Hotel Booking Website</strong>, your trusted companion in finding the perfect getaway.
+                            We believe that every journey begins with a single step—and that step starts here. Our platform is 
+                            dedicated to connecting travelers with exceptional accommodations, whether you're seeking luxurious 
+                            resorts, charming boutique hotels, or cozy budget stays.
+                        </p>
+                        <h3 class="mt-4">Our Mission</h3>
+                        <p>
+                            To make your travel planning seamless, efficient, and enjoyable. We aim to provide you with a wide range of 
+                            hotel options tailored to your unique preferences and needs, ensuring every trip is as memorable as the destination itself.
+                        </p>
+                        <h3 class="mt-4">Why Choose Us?</h3>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Extensive Selection: From bustling city centers to tranquil countryside retreats, we feature accommodations worldwide to suit every taste and budget.</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Best Price Guarantee: Enjoy competitive pricing and exclusive deals to make your stays more affordable.</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> User-Friendly Experience: Our intuitive interface allows you to search, compare, and book effortlessly.</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Customer-Centric Support: We're here for you 24/7, ensuring your questions and concerns are addressed promptly.</li>
+                        </ul>
+                        <h3 class="mt-4">Our Story</h3>
+                        <p>
+                            Hotel Booking Website was founded with a passion for travel and a vision to simplify the booking 
+                            process. Over the years, we've grown into a trusted partner for countless travelers, delivering quality service and unforgettable experiences.
+                        </p>
+                        <p>
+                            Whether you're planning a romantic escape, a family vacation, or a business trip, let us help you create memories that last a lifetime.
+                            Start your journey today with <strong>Hotel Booking Website</strong>—your key to unforgettable stays!
+                        </p>
+                        <h3 class="mt-4">What We Value</h3>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Customer satisfaction</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Transparency in pricing</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> Convenience and flexibility</li>
+                        </ul>
+                        <hr class="my-4">
+                        <p class="text-muted">
+                            Thank you for choosing us for your stay. We hope to make your experience memorable!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Us Section -->
+<section class="mt-4 py-4">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12.5 text-center">
+                <h2><strong>Contact Us</strong></h2>
+                <div class="card shadow-lg" style="border: none;">
+
+                    <div class="card-body bg-light">
+                        <div class="ratio ratio-16x9 mb-4">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.155706625098!2d104.8912516!3d11.5703975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109517388680e15%3A0x63057e6682968f5!2sInstitute%20of%20Technology%20of%20Cambodia!5e0!3m2!1sen!2skh!4v1614008313984!5m2!1sen!2skh"
+                                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <ul class="list-unstyled text-left">
+                            <li><strong>Email:</strong> support@hotelbooking.com</li>
+                            <li><strong>Phone:</strong> +855 12345678</li>
+                            <li><strong>Address:</strong> Russian Conf Norodom Boulevard, Phnom Penh</li>
+                        </ul>
+                        <hr>
+                        <h4>Follow Us</h4>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/so.thy.773124?mibextid=wwXIfr&mibextid=wwXIfr" target="_blank" class="text-decoration-none">
+                                    <img src="{% static 'image/FB.png' %}" alt="Facebook" style="width: 40px; height: 40px;">
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.instagram.com/sothy_vandeth/profilecard/?igsh=MTI0dTJ5dGwybGh2bg==" target="_blank" class="text-decoration-none">
+                                    <img src="{% static 'image/IG.png' %}" alt="Instagram" style="width: 40px; height: 40px;">
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.tiktok.com/@cestsothy?_t=ZS-8spb6Fs60iP&_r=1" target="_blank" class="text-decoration-none">
+                                    <img src="{% static 'image/Tiktok.png' %}" alt="TikTok" style="width: 40px; height: 40px;">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

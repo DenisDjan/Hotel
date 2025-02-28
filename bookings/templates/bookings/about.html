@@ -1,0 +1,57 @@
+{% extends 'bookings/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-13">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h1 class="display-5 fw-bold">About Us</h1>
+                </div>
+                <div class="card">
+                    <img src="{% static 'image/AboutUs.webp' %}" alt="About" class="about-image img-fluid rounded">
+                </div>
+                <div class="card-body bg-light text-left">
+                    <p>
+                        Welcome to <strong>Hotel Booking Website</strong>, your trusted companion in finding the perfect getaway.
+                        We believe that every journey begins with a single step—and that step starts here. Our platform is 
+                        dedicated to connecting travelers with exceptional accommodations, whether you're seeking luxurious 
+                        resorts, charming boutique hotels, or cozy budget stays.
+                    </p>
+                    <h3 class="mt-4">Our Mission</h3>
+                    <p>
+                        To make your travel planning seamless, efficient, and enjoyable. We aim to provide you with a wide range of 
+                        hotel options tailored to your unique preferences and needs, ensuring every trip is as memorable as the destination itself.
+                    </p>
+                    <h3 class="mt-4">Why Choose Us?</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Extensive Selection: From bustling city centers to tranquil countryside retreats, we feature accommodations worldwide to suit every taste and budget.</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Best Price Guarantee: Enjoy competitive pricing and exclusive deals to make your stays more affordable.</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> User-Friendly Experience: Our intuitive interface allows you to search, compare, and book effortlessly.</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Customer-Centric Support: We're here for you 24/7, ensuring your questions and concerns are addressed promptly.</li>
+                    </ul>
+                    <h3 class="mt-4">Our Story</h3>
+                    <p>
+                        Hotel Booking Website was founded with a passion for travel and a vision to simplify the booking 
+                        process. Over the years, we've grown into a trusted partner for countless travelers, delivering quality service and unforgettable experiences.
+                    </p>
+                    <p>
+                        Whether you're planning a romantic escape, a family vacation, or a business trip, let us help you create memories that last a lifetime.
+                        Start your journey today with <strong>Hotel Booking Website</strong>—your key to unforgettable stays!
+                    </p>
+                    <h3 class="mt-4">What We Value</h3>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Customer satisfaction</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Transparency in pricing</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Convenience and flexibility</li>
+                    </ul>
+                    <hr class="my-4">
+                    <p class="text-muted">
+                        Thank you for choosing us for your stay. We hope to make your experience memorable!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

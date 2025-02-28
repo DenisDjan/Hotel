@@ -1,0 +1,47 @@
+{% extends 'bookings/main.html' %}
+
+{% block title %}Booking Confirmation{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="fw-bold">Booking Confirmation</h3>
+        </div>
+        <div class="card-body">
+            <!-- Image Section -->
+            <div class="text-center mb-4">
+                <img src="{{ room.default_image.url }}" alt="{{ room.room_type }}" class="img-fluid rounded"
+                    style="max-height: 200px;">
+            </div>
+
+            <!-- User Details -->
+            <div class="text-center mb-4">
+                <h4 class="fw-bold">User Details</h4>
+                <p><strong>Name:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+            </div>
+
+            <!-- Room Details -->
+            <div class="text-center">
+                <h4 class="fw-bold">Room - {{ room.room_type }}</h4>
+                <p>
+                    <strong>Price per night:</strong> ${{ room.price_per_night }}<br>
+                    <strong>Number of Rooms:</strong> {{ rooms_to_book }}<br>
+                    <strong>Total Cost:</strong> ${{ total_cost }}<br>
+                    <strong>Check-in Date:</strong> {{ check_in|date:"M. d, Y" }}<br>
+                    <strong>Check-out Date:</strong> {{ check_out|date:"M. d, Y" }}
+                </p>
+            </div>
+        </div>
+        <!-- Action Buttons -->
+        <div class="card-footer d-flex justify-content-center">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="confirm" class="btn btn-success me-2">Confirm Booking</button>
+                <button type="submit" name="cancel" class="btn btn-danger">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
